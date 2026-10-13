@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Skill Assessment — Career Path Recommendation System{% endblock %}
+{% block content %}
+<div class="container py-5 assess-wrap">
+  <h1 class="h2 mb-2">Skill assessment</h1>
+  <p class="text-muted mb-4">
+    Drag each slider from 1 (beginner) to 10 (very strong). Be honest — there are no wrong answers.
+    Values must be whole numbers from 1 to 10.
+  </p>
+  <div id="formError" class="alert alert-danger d-none" role="alert"></div>
+  <form id="skillForm" class="cp-card" novalidate>
+    {% for key, label in [
+      ("programming", "Programming"),
+      ("communication", "Communication"),
+      ("creativity", "Creativity"),
+      ("mathematics", "Mathematics"),
+      ("problem_solving", "Problem Solving")
+    ] %}
+    <div class="mb-4">
+      <div class="d-flex justify-content-between align-items-center">
+        <label for="{{ key }}" class="form-label fw-semibold mb-1">{{ label }}</label>
+        <output for="{{ key }}" id="{{ key }}_out" class="val" aria-live="polite">5</output>
+      </div>
+      <input
+        type="range"
+        class="form-range"
+        id="{{ key }}"
+        name="{{ key }}"
+        min="1"
+        max="10"
+        step="1"
+        value="5"
+        required
+        aria-describedby="{{ key }}_hint {{ key }}_err"
+      >
+      <div id="{{ key }}_hint" class="d-flex justify-content-between small text-muted">
+        <span>1 — beginner</span>
+        <span>10 — expert</span>
+      </div>
+      <div class="small text-danger" id="{{ key }}_err" role="alert"></div>
+    </div>
+    {% endfor %}
+    <div class="d-flex flex-wrap gap-2">
+      <button type="submit" class="btn btn-cp" id="submitBtn">
+        <span class="spinner-border spinner-border-sm d-none" id="spin" aria-hidden="true"></span>
+        <span id="submitText">Get My Recommendations</span>
+      </button>
+      <button type="reset" class="btn btn-outline-cp" id="resetBtn">Reset</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/assess.js') }}"></script>
+{% endblock %}

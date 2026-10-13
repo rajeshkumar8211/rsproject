@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Your Results — Career Path Recommendation System{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h1 class="h2 mb-3">Your top 3 career matches</h1>
+  <div class="alert alert-info" role="note">
+    Match percentages indicate similarity to the sample career profiles, not a guarantee of career success.
+  </div>
+  <div id="results" class="row g-4 mt-1"></div>
+  <div class="mt-4">
+    <a class="btn btn-cp" href="{{ url_for('assess') }}">Retake the assessment</a>
+    <a class="btn btn-outline-cp ms-2" href="{{ url_for('home') }}">Back to home</a>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/results.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="cp-hero">
+  <div class="container">
+    <p class="eyebrow">For students exploring their next step</p>
+    <h1>Career Path Recommendation System</h1>
+    <p class="lead">Discover the Career That Matches Your Skills.</p>
+    <p class="intro">
+      Rate five core skills and we will compare your profile with eight sample career paths.
+      The system uses cosine similarity — the same idea as matching two vectors — so your
+      top matches change with the scores you enter. Use the results as a conversation starter,
+      not as a final decision.
+    </p>
+    <a class="btn btn-cp btn-lg" href="{{ url_for('assess') }}">Discover My Career</a>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="section-title">How the system works</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <article class="cp-card h-100">
+        <span class="step">1</span>
+        <h3>Rate your skills</h3>
+        <p>Score programming, communication, creativity, mathematics, and problem solving from 1 to 10 using sliders.</p>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <article class="cp-card h-100">
+        <span class="step">2</span>
+        <h3>We compare profiles</h3>
+        <p>Your vector is compared with every career in the dataset using scikit-learn cosine similarity. Higher similarity means a closer skill shape.</p>
+      </article>
+    </div>
+    <div class="col-md-4">
+      <article class="cp-card h-100">
+        <span class="step">3</span>
+        <h3>See your top 3</h3>
+        <p>Get the three closest careers, match percentages, important skills, and ideas for what to explore next.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cp-band py-5">
+  <div class="container">
+    <h2 class="section-title">Benefits of career recommendations</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <article class="cp-card h-100">
+          <h3 class="h5">See your strengths</h3>
+          <p>Turn a vague sense of what you are good at into a clear five-skill profile.</p>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <article class="cp-card h-100">
+          <h3 class="h5">Find new options</h3>
+          <p>Meet roles you may not have considered yet, from data science to project management.</p>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <article class="cp-card h-100">
+          <h3 class="h5">Plan what to learn</h3>
+          <p>Each result highlights important skills and practical next steps to study or practise.</p>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <article class="cp-card h-100">
+          <h3 class="h5">Start conversations</h3>
+          <p>Share your results with teachers, mentors, or advisors as a starting point.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
